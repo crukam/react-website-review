@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, GoogleApiWrapper,Marker,InfoWindow} from 'google-maps-react';
-/*import logoicon from './minilogoicon.png'*/
+import logoicon from './minilogoicon.png'
 
 
 
@@ -49,7 +49,7 @@ export class MapContainer extends React.Component {
     };
   
  
- /* displayRestaurantMarkers=()=>{
+displayRestaurantMarkers=()=>{
         return this.props.restaurants.map((item,index)=>{
             return <Marker key={index} onClick={this.onMarkerClick} 
                   position={{lat:item.lat,lng:item.long}}
@@ -64,7 +64,7 @@ export class MapContainer extends React.Component {
                   </Marker>
            
            })
-          }*/
+          }
   
 
  
@@ -95,7 +95,7 @@ export class MapContainer extends React.Component {
                        </div>
                      </InfoWindow>
                   </Marker>
-       
+             {this.displayRestaurantMarkers()}
         </Map> );
   }
 }

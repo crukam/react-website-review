@@ -1,0 +1,24 @@
+.restaurant-list{
+   
+	margin-top:2vh;
+	margin-right: 0vh;
+    margin-left: 155vh;
+    padding: 0%;
+    background-color: gainsboro;
+    width: 20vw;
+	height:100vh;
+	color:white;
+    border:3px solid gainsboro;
+    position:absolute;
+    overflow-y:scroll;
+    z-index:1;
+}
+.restaurant-wrapper{
+   
+    background-color: gray;
+    border-bottom: 2px solid gray;
+    width: 100%;
+}
+.restaurant{
+    color:white;
+}

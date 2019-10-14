@@ -3,13 +3,14 @@ import logo from './logo.png';
 import GoogleApiWrapper from './googlemapWrapper.jsx';
 import Inputform from './restaurantInput.jsx';
 import restaurants  from './restaurant.json';
+import Restaurantlist from './restaurantList.jsx'
 import './App.css';
 /*import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';  */
 function App() {
   
- console.log(restaurants[0]);
+ 
   return (
      
     <div className="App">
@@ -20,7 +21,8 @@ function App() {
         </h2>
        </header>
        <Inputform/>
-       <GoogleApiWrapper Restaurants={restaurants} ></GoogleApiWrapper>
+       <Restaurantlist restaurants={restaurants}/>
+       <GoogleApiWrapper restaurants={restaurants} ></GoogleApiWrapper>
        
     </div>
   );

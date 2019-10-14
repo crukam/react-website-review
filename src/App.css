@@ -2,6 +2,8 @@
   text-align: center;
   padding: 0%;
   margin: 0%;
+  height:100%;
+  width: 100%
 }
 
 .App-logo {
@@ -11,6 +13,7 @@
 
 .App-header {
   background-color: gray;
+  width: 100%;
   min-height: 5vh;
   display: flex;
   align-items: center;
