@@ -2,7 +2,7 @@ import React from 'react';
 
 class Comment extends React.Component{
     comments=()=>{return(this.props.ratings.map(
-        (item)=>(<p>{item.comment}</p>) ));}
+        (item)=>(<p class="comment">{item.comment}</p>) ));}
    
 
 render(){

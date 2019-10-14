@@ -1,8 +1,8 @@
 import React from 'react';
 import Restaurant from './restaurant.jsx';
-import Filter from './restaurantFilters.jsx'
+import Filter from './restaurantFilters.jsx';
 import './restaurantlist.css';
-
+import Comment from './comment.jsx'
 class Restaurantlist extends React.Component{
    
     render(){
@@ -11,7 +11,7 @@ class Restaurantlist extends React.Component{
         /*console.log(restaurantArray);*/
         restaurantArray.forEach((item,key)=>{
                    list.push(<Restaurant key={KeyboardEvent} name={item.restaurantName} 
-                    adress={item.address} ratings={item.ratings}/>)})
+                    adress={item.address} ratings={item.ratings}> <Comment ratings={item.ratings}></Comment></Restaurant>)})
         return(<div class="restaurant-list">
                  <Filter/>
                  {list}

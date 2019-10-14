@@ -142,5 +142,37 @@
           "comment":"Meh, it was fine."
        }
     ]
- }
+ },
+ {
+   "restaurantName":"The George & Dragon",
+   "address":"1 Cross Hill, Hemsworth, Pontefract WF9 4LQ",
+   "lat":53.613660 ,
+   "long":-1.353760,
+   "ratings":[
+      {
+         "stars":3,
+         "comment":"Great! But not many veggie options."
+      },
+      {
+         "stars":1,
+         "comment":"not recommended!"
+      }
+   ]
+},
+{
+   "restaurantName":"The Blue Bell",
+   "address":"8 Cross Hill, Pontefract WF9 4LQ",
+   "lat":53.613530  ,
+   "long":-1.353720,
+   "ratings":[
+      {
+         "stars":3,
+         "comment":"Great! But not many veggie options."
+      },
+      {
+         "stars":2,
+         "comment":"not recommended!"
+      }
+   ]
+}
 ]
