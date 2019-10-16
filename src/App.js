@@ -12,13 +12,13 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';  */
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state={showcomponent:true,restaurantClicked:0}
+    this.handlerestaurantclick=this.handlerestaurantclick.bind(this);
+    this.state={showcomponent:false,restaurantClicked:-1}
   }
  
 
   handlerestaurantclick(index){
-    this.setstate({restaurantClicked:index, showcomponent:true});
-    
+    this.setState({restaurantClicked:index, showcomponent:true});
   }
   
  render(){

@@ -12,6 +12,14 @@
          {
             "stars":5,
             "comment":"My favorite restaurant!"
+         },
+         {
+            "stars":3,
+            "comment":"good experience overall but custumer service can be improved!"
+         },
+         {
+            "stars":2,
+            "comment":"mostly dry food with no favour review your menu!"
          }
       ]
    },
