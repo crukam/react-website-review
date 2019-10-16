@@ -1,6 +1,23 @@
-.comment{
-    width: 20vw;
-    height:5vh; 
-    background-color: gray;
-    color:white;
+.comment-wrapper{
+    border:0.2vw solid gray;
+	margin-top:40vh;
+	margin-right: 2vh;
+    margin-left: 80vh;
+    padding: 0%;
+	background-color: gainsboro;;
+	width: 20vw;
+	height:30vh;
+	color:white;
+    border:3px solid gray;
+    overflow-y:scroll;
+    position:absolute;
+    z-index:1;
+}
+.comment-item{
+  height:10vh;
+  width: 100%;
+  background-color: gray;
+  margin-top:0%;
+  margin-bottom: 0%;
+  border:solid gainsboro;  
 }

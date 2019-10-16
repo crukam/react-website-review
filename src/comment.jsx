@@ -1,14 +1,16 @@
 import React from 'react';
-
+import './comment.css'
 class Comment extends React.Component{
-    comments=()=>{return(this.props.ratings.map(
-        (item)=>(<p class="comment">{item.comment}</p>) ));}
-   
-
-render(){
-    return(<div class="commentWrapper">
-     {this.comments()}
-    </div>)
+    
+    render(){
+        let list=[];
+        this.props.ratings.forEach((item,index)=>{
+            list.push(<p className="comment-item" key={index}>{item.comment}</p>)})
+        return(
+            <div className="comment-wrapper">
+            {list}
+            </div>
+        )
+    }
 }
-}
-export default Comment;
+export default Comment
