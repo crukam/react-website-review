@@ -35,7 +35,11 @@
          },
          {
             "stars":3,
-            "comment":"Meh, it was fine."
+            "comment":"I am gonna suggest Ramzy take over your business!"
+         },
+         {
+            "stars":5,
+            "comment":"My favorite restaurant!"
          }
       ]
    },
@@ -45,13 +49,17 @@
     "lat":53.6111756  ,
     "long":-1.3517495,
     "ratings":[
+      {
+         "stars":5,
+         "comment":"My favorite restaurant!"
+      },
        {
           "stars":5,
           "comment":"Tiny pizzeria next to Sacre Coeur!"
        },
        {
           "stars":3,
-          "comment":"Meh, it was fine."
+          "comment":"some room for improvement."
        }
     ]
  },
@@ -83,7 +91,11 @@
        },
        {
           "stars":3,
-          "comment":"Meh, it was fine."
+          "comment":"Meh, the wine was horrible."
+       },
+       {
+         "stars":4,
+         "comment":"we would try to visit other restaurant in the future."
        }
     ]
  },
@@ -99,8 +111,12 @@
        },
        {
           "stars":3,
-          "comment":"Meh, it was fine."
-       }
+          "comment":" it was fine, but we did not get any food for the kids."
+       },
+       {
+         "stars":4,
+         "comment":" will recommend to my friends and family"
+      }
     ]
  },
  {
@@ -131,8 +147,12 @@
        },
        {
           "stars":3,
-          "comment":"Meh, it was fine."
-       }
+          "comment":"what a great restaurant despite unprofessionnal staff."
+       },
+       {
+         "stars":3,
+         "comment":"next time i will come with my pet as the food was oweful."
+      }
     ]
  },
  {
@@ -178,8 +198,8 @@
          "comment":"Great! But not many veggie options."
       },
       {
-         "stars":2,
-         "comment":"not recommended!"
+         "stars":4,
+         "comment":"will reccommend some of my connection to try out this amazing restaurant!"
       }
    ]
 }
