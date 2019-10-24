@@ -3,7 +3,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import  { faBars} from '@fortawesome/free-solid-svg-icons';
 import './restaurantInput.css'
 class Inputform extends React.Component{
+	
 	render(){
+
 		return(
 		<form className="inputform">
 		    <div>

@@ -13,9 +13,14 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.handlerestaurantclick=this.handlerestaurantclick.bind(this);
-    this.state={showcomponent:false,restaurantClicked:-1}
+    this.state={restaurants:Restaurantlist,showcomponent:false,restaurantClicked:-1,newrestaurant:{}}
   }
- 
+  findrestaurant(){
+   console.log(Restaurantlist);
+  }
+  setrestaurantName(name){}
+  setrestaurantreview(comment,rating){}
+  setrestaurantAdress(adress){}
 
   handlerestaurantclick(index){
     this.setState({restaurantClicked:index, showcomponent:true});
@@ -26,6 +31,7 @@ class App extends React.Component {
    return (
      
   <div className="App">
+    <div>{this.findrestaurant()}</div>
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h2>

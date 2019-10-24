@@ -32,6 +32,19 @@ export class MapContainer extends React.Component {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
+  convertAdress= (adress)=>{
+    let geocoder = new this.props.google.maps.Geocoder();
+    let res=[];
+    geocoder.geocode({ 'address': adress},function(results, status){
+      if (status === this.props.google.maps.GeocoderStatus.OK) {
+        res.push(results[0].geometry.location.lat());
+        res.push(results[0].geometry.location.lng());
+       }
+       return res;
+    } );
+
+      
+  }
   
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -75,7 +88,7 @@ displayRestaurantMarkers=()=>{
       return <h1>Something went wrong.</h1>;
      }
     return (
-	    
+	     
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
