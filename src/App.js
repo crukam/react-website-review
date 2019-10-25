@@ -13,10 +13,11 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.handlerestaurantclick=this.handlerestaurantclick.bind(this);
+    this.saveRestaurant=this.saveRestaurant.bind(this);
     this.state={restaurants:Restaurantlist,showcomponent:false,restaurantClicked:-1,newrestaurant:{}}
   }
   
-  saveReastaurant(restaurant){
+  saveRestaurant(restaurant){
     this.setState((prevState)=>
                  {
                    let restaurants=prevState.restaurants;
@@ -32,15 +33,15 @@ class App extends React.Component {
    return (
      
   <div className="App">
-    <div>{this.findrestaurant()}</div>
+    
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h2>
        Restaurants reviews
       </h2>
      </header>
-     {this.findrestaurant()}
-     <Inputform/>
+    
+     <Inputform onSave={this.saveRestaurant}/>
      <Restaurantlist restaurants={restaurants} onclickedrestaurant={this.handlerestaurantclick}/>
      {this.state.showcomponent?<Comment ratings={restaurants[this.state.restaurantClicked].ratings} />:null}
      <GoogleApiWrapper restaurants={restaurants} ></GoogleApiWrapper>
