@@ -15,13 +15,14 @@ class App extends React.Component {
     this.handlerestaurantclick=this.handlerestaurantclick.bind(this);
     this.state={restaurants:Restaurantlist,showcomponent:false,restaurantClicked:-1,newrestaurant:{}}
   }
-  findrestaurant(){
-   console.log(Restaurantlist);
+  
+  saveReastaurant(restaurant){
+    this.setState((prevState)=>
+                 {
+                   let restaurants=prevState.restaurants;
+                   return{restaurants};
+                  });
   }
-  setrestaurantName(name){}
-  setrestaurantreview(comment,rating){}
-  setrestaurantAdress(adress){}
-
   handlerestaurantclick(index){
     this.setState({restaurantClicked:index, showcomponent:true});
   }
@@ -38,6 +39,7 @@ class App extends React.Component {
        Restaurants reviews
       </h2>
      </header>
+     {this.findrestaurant()}
      <Inputform/>
      <Restaurantlist restaurants={restaurants} onclickedrestaurant={this.handlerestaurantclick}/>
      {this.state.showcomponent?<Comment ratings={restaurants[this.state.restaurantClicked].ratings} />:null}
