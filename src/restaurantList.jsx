@@ -8,7 +8,7 @@ class Restaurantlist extends React.Component{
         super(props);
         this.handle_min=this.handle_min.bind(this);
         this.handle_max=this.handle_max.bind(this);
-        this.state={rat_min:0,rat_max:5}
+        this.state={rat_min:0,rat_max:5,rat_average:0}
     }
 
    
@@ -18,10 +18,16 @@ class Restaurantlist extends React.Component{
     
     handle_min(min){this.setState({rat_min:min});}
     handle_max(max){this.setState({rat_max:max});}
-    
+    average=(array)=>{
+       
+        return (array.reduce((a,b)=>(a+b))/array.length);
+       }
    
     render(){
         let restaurantArray=Object.keys(this.props.restaurants).map((id)=>this.props.restaurants[id]);
+        let ratings= Object.keys(this.props.restaurants).map((i)=>this.props.restaurants[i]);
+        let stars=ratings.map(item=>item.ratings);
+        console.log(stars);
         let list=[];
         
         restaurantArray.forEach((item,index)=>{

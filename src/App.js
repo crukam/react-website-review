@@ -21,7 +21,8 @@ class App extends React.Component {
   }
   
   saveRestaurant(restaurant){
-    if(!restaurant.key){restaurant.key= Object.keys(this.state.restaurants).length;}
+    if(!restaurant.key){
+      restaurant.key= Object.keys(this.state.restaurants).length;}
     this.setState((prevState)=>
                  {
                    let restaurants=prevState.restaurants;
@@ -37,7 +38,7 @@ class App extends React.Component {
   }
   
  render(){
-  console.log(restaurants);
+  
    return (
     
   <div className="App">

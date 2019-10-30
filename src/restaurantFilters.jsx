@@ -1,6 +1,10 @@
 import React from 'react';
 import './restaurantFilters.css'
 class Filter extends React.Component{
+	constructor(props){
+		super(props);
+		this.handlefilter=this.handlefilter.bind(this);
+	}
 	
 	handlefilter(e){
 	 e.target.className==="min_option"? this.props.getmin_filter(e.target.value):this.props.getmax_filter(e.target.value);
