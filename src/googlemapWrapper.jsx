@@ -55,7 +55,7 @@ export class MapContainer extends React.Component {
     onMapClicked = (props) => {
       if (this.state.showingInfoWindow) {
         this.setState({
-          showingInfoWindow: false,
+          showingInfoWindow:false,
           activeMarker: null
         })
       }
