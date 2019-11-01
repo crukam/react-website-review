@@ -24,10 +24,14 @@ class Restaurantlist extends React.Component{
        }
    
     render(){
-        let restaurantArray=Object.keys(this.props.restaurants).map((id)=>this.props.restaurants[id]);
-        let ratings= Object.keys(this.props.restaurants).map((i)=>this.props.restaurants[i]);
-        let stars=ratings.map(item=>item.ratings);
-        console.log(stars);
+       let restaurantArray=Object.keys(this.props.restaurants).map((id)=>this.props.restaurants[id]);
+        /* let ratings= Object.keys(this.props.restaurants).map((i)=>this.props.restaurants[i]);
+        let starsObj=ratings.map(item=>item.ratings);
+        let star=[]
+        starsObj.forEach(function(item,index){
+            star.push(item[index].stars);
+        });*/
+        
         let list=[];
         
         restaurantArray.forEach((item,index)=>{

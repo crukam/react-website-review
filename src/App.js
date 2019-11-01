@@ -38,7 +38,9 @@ class App extends React.Component {
   }
   
  render(){
-  
+  let JSONSTRINGFY= JSON.parse('./restaurant.json' )
+       console.log(JSONSTRINGFY);
+
    return (
     
   <div className="App">
