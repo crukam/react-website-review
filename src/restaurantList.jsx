@@ -24,9 +24,12 @@ class Restaurantlist extends React.Component{
     } 
     getStars(name){
         if(this.getRatings(name)=== null)return null;
-       return this.getRatings(name).map((item)=>{return item.stars})
+       return this.getRatings(name).map ((item)=>{return item.stars})
     }
-
+    getaverageRatings(name){
+        if (this.getStars(name)===null) return -1;
+       return Math.floor(this.average(this.getStars(name)));
+    }
    
    handleclick(index){
        this.props.onclickedrestaurant(index);
@@ -40,7 +43,7 @@ class Restaurantlist extends React.Component{
        }
    
     render(){
-       console.log(this.getStars("Hemsworth Golden Cod"));
+       console.log(this.getaverageRatings("Hemsworth Golden Cod"));
        // let iterator = this.props.restaurants.keys();
      //for(let i=0;i<this.props.restaurants.length;i++){console.log(this.props.restaurants[i]);}
       //for(let key in iterator ) {console.log(key);};
