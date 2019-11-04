@@ -11,6 +11,22 @@ class Restaurantlist extends React.Component{
         this.state={rat_min:0,rat_max:5,rat_average:0}
     }
 
+         
+   getRestaurant(name){
+        for(let i=0;i<this.props.restaurants.length;i++){
+            if(this.props.restaurants[i].restaurantName===name)
+             return(this.props.restaurants[i]);
+        }
+        return null;
+    }  
+    getRatings(name){
+      return  this.getRestaurant(name)!=null? this.getRestaurant(name).ratings:null;
+    } 
+    getStars(name){
+        if(this.getRatings(name)=== null)return null;
+       return this.getRatings(name).map((item)=>{return item.stars})
+    }
+
    
    handleclick(index){
        this.props.onclickedrestaurant(index);
@@ -24,17 +40,14 @@ class Restaurantlist extends React.Component{
        }
    
     render(){
-       let restaurantArray=Object.keys(this.props.restaurants).map((id)=>this.props.restaurants[id]);
-        /* let ratings= Object.keys(this.props.restaurants).map((i)=>this.props.restaurants[i]);
-        let starsObj=ratings.map(item=>item.ratings);
-        let star=[]
-        starsObj.forEach(function(item,index){
-            star.push(item[index].stars);
-        });*/
+       console.log(this.getStars("Hemsworth Golden Cod"));
+       // let iterator = this.props.restaurants.keys();
+     //for(let i=0;i<this.props.restaurants.length;i++){console.log(this.props.restaurants[i]);}
+      //for(let key in iterator ) {console.log(key);};
         
         let list=[];
         
-        restaurantArray.forEach((item,index)=>{
+        this.props.restaurants.forEach((item,index)=>{
                    list.push(<Restaurant key={index} name={item.restaurantName} 
                     adress={item.address} ratings={item.ratings} onClick={()=>this.handleclick(index)}> </Restaurant>)})
         return(<div className="restaurant-list">
