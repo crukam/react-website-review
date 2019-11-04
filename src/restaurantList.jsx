@@ -30,6 +30,17 @@ class Restaurantlist extends React.Component{
         if (this.getStars(name)===null) return -1;
        return Math.floor(this.average(this.getStars(name)));
     }
+    filterRestaurant(name){
+        return (this.state.rat_min<=this.getaverageRatings(name) && this.getaverageRatings(name)<=this.state.rat_max);
+    }
+    getFilteredRestaurants(){
+        let res=[];
+        for(let i=0;i<this.props.restaurants.length;i++){
+            if(this.filterRestaurant(this.props.restaurants[i].restaurantName))
+             res.push(this.props.restaurants[i]);
+        } 
+        return res; 
+    }
    
    handleclick(index){
        this.props.onclickedrestaurant(index);
@@ -43,18 +54,14 @@ class Restaurantlist extends React.Component{
        }
    
     render(){
-       console.log(this.getaverageRatings("Hemsworth Golden Cod"));
-       // let iterator = this.props.restaurants.keys();
-     //for(let i=0;i<this.props.restaurants.length;i++){console.log(this.props.restaurants[i]);}
-      //for(let key in iterator ) {console.log(key);};
-        
+       
         let list=[];
-        
-        this.props.restaurants.forEach((item,index)=>{
-                   list.push(<Restaurant key={index} name={item.restaurantName} 
+        this.getFilteredRestaurants().forEach((item,index)=>{ 
+                    list.push(<Restaurant key={index} name={item.restaurantName} 
                     adress={item.address} ratings={item.ratings} onClick={()=>this.handleclick(index)}> </Restaurant>)})
+          
         return(<div className="restaurant-list">
-                 <Filter getmin_filter={this.state.handle_min} get_max={this.state.handle_max}/>
+                 <Filter getmin_filter={this.handle_min} getmax_filter={this.handle_max}/>
                  {list}
                </div>);
     }
