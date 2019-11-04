@@ -23,3 +23,18 @@
   border:solid gainsboro;
   font-family: FontAwesome;  
 }
+.myresto-title{
+    background-color: gray;
+    margin:0 0 0 0;
+}
+.input-wrapper{
+    background-color: gainsboro;
+    margin-top:2vh;
+	margin-right: 2vh;
+    margin-left: 4vh;
+	width: 20vw;
+    height:20vh; 
+    z-index:2;
+   
+    position:absolute;
+}
