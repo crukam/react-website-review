@@ -28,13 +28,24 @@
     margin:0 0 0 0;
 }
 .input-wrapper{
-    background-color: gainsboro;
-    margin-top:2vh;
-	margin-right: 2vh;
-    margin-left: 4vh;
-	width: 20vw;
+    background-color: gray;
+    margin-top:0vh;
+	margin-right: 0vh;
+    margin-left: 0vh;
+	width: 100%;
     height:20vh; 
     z-index:2;
    
     position:absolute;
+}
+.inputcontainer{
+    margin-top: 2%;
+    margin-right: 0%;
+    margin-left: 0%;
+   
+
+}
+.InputItem{
+    width: 100%;
+    height: 100%;
 }
