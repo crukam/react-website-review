@@ -1,26 +1,36 @@
 import React from 'react';
 import './comment.css';
+    
+const commentInit={star:0,comment:''};
 class CommentInput extends React.Component{
     constructor(props){
         super(props);
-        this.state={star: 0,comment:''}
+        this.handleInputsave=this.handleInputsave.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state={rating:Object.assign({},commentInit)}
     }
-    handlestarchange(e){
-      this.setState({star:e.target.value});
+    handleInputsave(){
+        this.props.onClick(this.state.rating);
+        this.setState({rating:Object.assign({},commentInit)});
     }
-    handlecommentchange(e){
+    handleChange(e){
+        let name=e.target.name;
+        let value= e.target.value;
+        this.setState((prevState)=>{
+            
+            prevState.rating[name]=value;
+            return({product:prevState.rating});
 
+        });
     }
+    
     
     render(){
         return(
         <div className="input-wrapper">
-            
-           
-			
-            <div className = "inputcontainer rating">
-                     Ratings
-					<select onChange={this.handlestarchange} >
+             <div className = "inputcontainer rating">
+                    <label>Ratings</label>
+					<select name="rating" value={this.state.rating.star} onChange={this.handleChange}>
 					<option> </option>
 					<option >0 </option>  
 					<option >1</option>  
@@ -30,12 +40,12 @@ class CommentInput extends React.Component{
                     <option>5</option>  
 					</select> 
 			</div>
-            <div className = "inputcontainer" onChange={this.handlecommentchange}>
-                <textarea className ="InputItem" rows="4" cols="16" placeholder="comment">
+            <div className = "inputcontainer"  >
+                <textarea className ="InputItem" name="comment" rows="4" cols="16" placeholder="comment"onChange={this.handleChange} value={this.state.rating.comment}>
 				</textarea>
 			</div>
             
-            <button onClick={this.props.onClick}>save</button>
+            <button onClick={this.handleInputsave}>save</button>
         </div>
         );
     }
