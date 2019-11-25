@@ -2,7 +2,7 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import  { faBars} from '@fortawesome/free-solid-svg-icons';
 import './restaurantInput.css';
-let Init_value={restaurantName:'',address:'',lat:'',long:'',ratings:[{star:'',comment:''}]}
+const Init_value={restaurantName:'',address:''}
 class Inputform extends React.Component{
 	constructor(props){
 		super(props);
@@ -16,20 +16,26 @@ class Inputform extends React.Component{
 	handlechange(e){
 		
 		const name=e.target.name;
-		const value=e.target.value;
-		this.setState((prevState)=>{
-						  prevState.restaurant[name]=value;
-			              return{restaurant:prevState.restaurant};
-		                });
-	}
-	handleSave=(e)=>{
 		
+		const value=e.target.value;
+		
+		this.setState((prevState)=>{
+						  
+						  prevState.restaurant[name]=value;
+						  let resto = prevState.restaurant
+			              return{ resto};
+						});
+						console.log("before save:" +this.state.restaurant);
+					
+	}
+	handleSave(e){
+		console.log("before save:" +this.state.restaurant);
 		this.props.onSave(this.state.restaurant);
 		this.setState({
 			restaurant:Object.assign({},Init_value),
 			 error:{}});
 			 
-			 e.preventDefault();
+			e.preventDefault();
 	}
 	
 	render(){
@@ -53,22 +59,7 @@ class Inputform extends React.Component{
 					onChange={this.handlechange}>
 				    </textarea>
 			</div>
-			<div className = "inputcontainer rating">
-                     Ratings
-					<select >
-					<option> </option>
-					<option >0 </option>  
-					<option >1</option>  
-					<option>2</option>
-					<option>3</option>
-					<option>4</option><option>5</option>  
-					</select> 
-			</div>
-			<div className = "inputcontainer">
-                <textarea className ="InputItem" rows="4" cols="18" placeholder="comment">
-				</textarea>
-			</div>
-            <input className = "inputitem submitbutton" type="submit" value="submit" onClick={this.handleSave}/>
+			 <input className = "inputitem submitbutton" type="submit" value="submit" onClick={this.handleSave}/>
         </form>
 		
 		);

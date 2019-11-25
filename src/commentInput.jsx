@@ -10,8 +10,10 @@ class CommentInput extends React.Component{
         this.state={rating:Object.assign({},commentInit)}
     }
     handleInputsave(){
+        console.log("restaurant before call back:"+ this.state.rating );
         this.props.onClick(this.state.rating);
         this.setState({rating:Object.assign({},commentInit)});
+        console.log("restaurant call back:"+ this.state.rating );
     }
     handleChange(e){
         let name=e.target.name;
@@ -19,7 +21,7 @@ class CommentInput extends React.Component{
         this.setState((prevState)=>{
             
             prevState.rating[name]=value;
-            return({product:prevState.rating});
+            return({rating:prevState.rating});
 
         });
     }
@@ -31,13 +33,12 @@ class CommentInput extends React.Component{
              <div className = "inputcontainer rating">
                     <label>Ratings</label>
 					<select name="rating" value={this.state.rating.star} onChange={this.handleChange}>
-					<option> </option>
-					<option >0 </option>  
-					<option >1</option>  
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-                    <option>5</option>  
+					<option value="0" >0 </option>  
+					<option value="1">1</option>  
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+                    <option value="5">5</option>  
 					</select> 
 			</div>
             <div className = "inputcontainer"  >
