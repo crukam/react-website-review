@@ -61,7 +61,7 @@ class App extends React.Component {
   
  render(){
   
-  console.log("after:"+ this.state.addedrestaurants);
+ // console.log("after:"+ this.state.addedrestaurants);
   // console.log( this.state.restaurants);
    return (
     

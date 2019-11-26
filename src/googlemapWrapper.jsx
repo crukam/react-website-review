@@ -96,7 +96,7 @@ displayRestaurantMarkers=()=>{
           style={mapStyles}
           initialCenter={{ lat: 53.607596, lng: -1.348026}}>
           <Marker onClick={this.onMarkerClick}
-                  position={{ lat: 53.607596, lng: -1.348026}}
+                  position={{ lat: 53.607596 , lng: -1.348026}}
                   name={'current location'}
                  >
                   
