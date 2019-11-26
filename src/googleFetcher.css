@@ -1,0 +1,10 @@
+.place-fetcher{
+    width: 7vw;
+    height:5vh;
+    border-radius: 20%;
+    background-color: lavender;
+    position:absolute;
+    z-index:1;
+    margin-top:2vh;
+    margin-left: -70vh;
+}

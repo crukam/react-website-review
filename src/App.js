@@ -6,7 +6,7 @@ import GoogleApiWrapper from './googlemapWrapper.jsx';
 import Restaurantlist from './restaurantList.jsx';
 import Comment from './comment.jsx';
 import ErrorBoundary from './errorBandary.jsx';
-
+import GoogleFetcher from './googleFetcher.jsx';
 
 import './App.css';
 let restaurants=require('./restaurant.json');
@@ -75,7 +75,7 @@ class App extends React.Component {
      </header>
      <ErrorBoundary>
    
-     
+     <GoogleFetcher></GoogleFetcher>
      <Restaurantlist restaurants={restaurants} onclickedrestaurant={this.handlerestaurantclick} filter={this.handlefilter}/>
      {this.state.showcomponent?<Comment ratings={restaurants[this.state.restaurantClicked].ratings} onratingSave={this.saveRating}  />:null}
      <GoogleApiWrapper restaurants={restaurants} ></GoogleApiWrapper>
