@@ -1,8 +1,8 @@
 import React from 'react';
 import { Map, GoogleApiWrapper,Marker,InfoWindow} from 'google-maps-react';
-import logoicon from './minilogoicon.png'
-
-
+import logoicon from './minilogoicon.png';
+import fetchdataicon from './miniGoogleIcon.png';
+let googlefetchdata=require('./googleData.json');
 
 
 const mapStyles = {
@@ -79,6 +79,24 @@ displayRestaurantMarkers=()=>{
            })
           }
   
+displaygooglefetchMarkers=()=>{
+ return googlefetchdata.map((item,index)=>
+               {
+                     return (<Marker key={index} position={item.geometry.location}
+                               title={item.name}  name={item.name} icon={fetchdataicon}
+                               onClick={this.onMarkerClick} >
+                               <InfoWindow  marker={this.state.activeMarker}
+                                  visible={this.state.showingInfoWindow}>
+                                <div>
+                                   <h1>{this.state.selectedPlace.name}</h1>
+                                </div>
+                               </InfoWindow>
+                             </Marker>
+                            );   
+              });
+
+}
+  
 
  
   render() {
@@ -109,6 +127,7 @@ displayRestaurantMarkers=()=>{
                      </InfoWindow>
                   </Marker>
              {this.displayRestaurantMarkers()}
+             {this.props.fetchresto ? this.displaygooglefetchMarkers():null}
         </Map> );
   }
 }

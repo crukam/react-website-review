@@ -9,11 +9,10 @@ import ErrorBoundary from './errorBandary.jsx';
 import GoogleFetcher from './googleFetcher.jsx';
 
 import './App.css';
+
 let restaurants=require('./restaurant.json');
 
-/*import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';  */
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -23,6 +22,7 @@ class App extends React.Component {
    
     this.state={
                 restaurants:restaurants,
+                fetchrestaurants:false,
                 addedrestaurants:[],
                 showcomponent:false,
                 restaurantClicked:-1,
@@ -58,11 +58,12 @@ class App extends React.Component {
   handlerestaurantclick(index){
     this.setState({restaurantClicked:index, showcomponent:true});
   }
-  
+  handlefetch(){
+    this.setState({fetchrestaurants:true});
+  }
  render(){
   
- // console.log("after:"+ this.state.addedrestaurants);
-  // console.log( this.state.restaurants);
+  this.state.fetchrestaurants? console.log("fetch initiated"):console.log("did not work")
    return (
     
   <div className="App">
@@ -75,10 +76,12 @@ class App extends React.Component {
      </header>
      <ErrorBoundary>
    
-     <GoogleFetcher></GoogleFetcher>
+     <GoogleFetcher handlefetch={()=>this.handlefetch()}></GoogleFetcher>
      <Restaurantlist restaurants={restaurants} onclickedrestaurant={this.handlerestaurantclick} filter={this.handlefilter}/>
      {this.state.showcomponent?<Comment ratings={restaurants[this.state.restaurantClicked].ratings} onratingSave={this.saveRating}  />:null}
-     <GoogleApiWrapper restaurants={restaurants} ></GoogleApiWrapper>
+     <GoogleApiWrapper restaurants={restaurants} 
+                       googleRestaurant={this.state.googleRestaurants}
+                       fetchresto={this.state.fetchrestaurants}></GoogleApiWrapper>
      </ErrorBoundary>
   </div>
 );
