@@ -1,22 +1,37 @@
 import React from 'react';
 import './googleFetcher.css';
-
+let googleRestaurants=require('./googleData.json');
 class GoogleFetcher extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={googleRestaurants:[], isloaded: false}
+   
+    
+   getrestoData=function (){
+      let temp=[];
+      googleRestaurants.forEach((item)=>
+                       {
+                     
+                          let data={
+                                     name:item.name,
+                                     adress:item.vicinity, 
+                                     location:item.geometry.location, 
+                                     rating:item.rating
+                                   }
+                         temp.push(data);   
+                    
+                  
+                });
+       return temp;
+
+   
+       
     }
-    UNSAFE_componentDidMount(){
-        fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=53.607596,-1.348026&radius=1000&type=restaurant&keyword=pizza&key=AIzaSyDdc8rD8-iI6ZMvSGakZ1ZJ5wkOzUFRWiI').
-        then( results=> results.json()).then(
-            (data)=>{console.log(data)});
-    }
+ 
     render(){
-        return ( <button className="place-fetcher">
-        Google Place
-     </button>
-  );
-        
+       
+        console.log(this.getrestoData());
+         return ( <button className="place-fetcher">
+                      Google Place
+                     </button>
+                  )
     }
 }
 export default GoogleFetcher;
