@@ -3,6 +3,17 @@ import './googleFetcher.css';
 let googlefetchdata=require('./googleData.json');
 
 class GoogleFetcher extends React.Component{
+   formatJsondata=()=>{
+   return googlefetchdata.map((item,index)=>{
+      let data={
+         name:item.name,
+         adress:item.vicinity,
+         rating:item.rating
+      }
+      return data;
+   });
+   }
+   
    formatdata=()=>{
       return googlefetchdata.map(
          (item,index)=>{
@@ -18,7 +29,7 @@ class GoogleFetcher extends React.Component{
     
     
        render(){
-       
+      // console.log(this.formatJsondata());
       if(!this.props.fetchresto ) { 
          return (
                  <button className="place-fetcher" onClick={()=>this.props.handlefetch()}>
