@@ -76,7 +76,7 @@ class App extends React.Component {
      </header>
      <ErrorBoundary>
    
-     <GoogleFetcher handlefetch={()=>this.handlefetch()}></GoogleFetcher>
+     <GoogleFetcher handlefetch={()=>this.handlefetch()} fetchresto={this.state.fetchrestaurants}></GoogleFetcher>
      <Restaurantlist restaurants={restaurants} onclickedrestaurant={this.handlerestaurantclick} filter={this.handlefilter}/>
      {this.state.showcomponent?<Comment ratings={restaurants[this.state.restaurantClicked].ratings} onratingSave={this.saveRating}  />:null}
      <GoogleApiWrapper restaurants={restaurants} 

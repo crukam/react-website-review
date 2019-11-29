@@ -8,3 +8,13 @@
     margin-top:2vh;
     margin-left: -70vh;
 }
+.data-wrapper{
+    position:absolute;
+    z-index:1;
+    width: 70%;
+    height: 30%;
+    background-color: gainsboro;
+    margin-top:30%;
+    margin-left: 2vh;
+    overflow-x:scroll;
+}
