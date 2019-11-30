@@ -2,7 +2,7 @@ import React from 'react';
 import { Map, GoogleApiWrapper,Marker,InfoWindow} from 'google-maps-react';
 import logoicon from './minilogoicon.png';
 import fetchdataicon from './miniGoogleIcon.png';
-let googlefetchdata=require('./googleData.json');
+//let googlefetchdata=require('./googleData.json');
 
 
 const mapStyles = {
@@ -65,8 +65,8 @@ export class MapContainer extends React.Component {
 displayRestaurantMarkers=()=>{
         return this.props.restaurants.map((item,index)=>{
             return <Marker key={index} onClick={this.onMarkerClick} 
-                  position={{lat:item.lat,lng:item.long}}
-                  title={item.restaurantName} name={item.restaurantName} icon={logoicon} >
+                  position={item.position}
+                  title={item.restaurantName} name={item.restaurantName} icon={ this.props.fetchresto ? fetchdataicon :logoicon} >
                      <InfoWindow
                          marker={this.state.activeMarker}
                          visible={this.state.showingInfoWindow}>
@@ -79,7 +79,7 @@ displayRestaurantMarkers=()=>{
            })
           }
   
-displaygooglefetchMarkers=()=>{
+/*displaygooglefetchMarkers=()=>{
  return googlefetchdata.map((item,index)=>
                {
                      return (<Marker key={index} position={item.geometry.location}
@@ -95,12 +95,14 @@ displaygooglefetchMarkers=()=>{
                             );   
               });
 
-}
+}*/
   
 
  
   render() {
-
+     this.props.restaurants.forEach(element => {console.log(element.position);
+       
+     });
     if (this.state.hasError) {
       
       return <h1>Something went wrong.</h1>;
@@ -126,8 +128,8 @@ displaygooglefetchMarkers=()=>{
                        </div>
                      </InfoWindow>
                   </Marker>
+             
              {this.displayRestaurantMarkers()}
-             {this.props.fetchresto ? this.displaygooglefetchMarkers():null}
         </Map> );
   }
 }

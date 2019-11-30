@@ -4,12 +4,7 @@ import './restaurantlist.css';
 class Restaurant extends React.Component{
     
    
-    stars=()=>{return(this.props.ratings.map(
-           (rate)=>{return (rate.stars)}))}
-    average=(array)=>{
-       
-        return (array.reduce((a,b)=>(a+b))/array.length);
-       }
+    
     render(){
         return(
             <button className="restaurant-wrapper" onClick={this.props.onClick} >

@@ -1,7 +1,7 @@
 import React from 'react';
 import './comment.css';
     
-const commentInit={star:0,comment:''};
+const commentInit={rating:0,comment:''};
 class CommentInput extends React.Component{
     constructor(props){
         super(props);
@@ -10,12 +10,15 @@ class CommentInput extends React.Component{
         this.state={rating:Object.assign({},commentInit)}
     }
     handleInputsave(){
-        console.log("restaurant before call back:"+ this.state.rating );
+        
         this.props.onClick(this.state.rating);
         this.setState({rating:Object.assign({},commentInit)});
-        console.log("restaurant call back:"+ this.state.rating );
+        //console.log('after:')
+        //console.log( this.state.rating );
     }
     handleChange(e){
+        //console.log('before:');
+        //console.log( this.state.rating );
         let name=e.target.name;
         let value= e.target.value;
         this.setState((prevState)=>{
