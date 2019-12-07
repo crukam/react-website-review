@@ -34,7 +34,7 @@ class Restaurantlist extends React.Component{
     }
    
     render(){
-       console.log( this.props.restaurants);
+      
           
         return(<div className="restaurant-list">
                  <Filter getmin_filter={this.handle_min} getmax_filter={this.handle_max}/>

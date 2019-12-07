@@ -18,7 +18,7 @@ class App extends React.Component {
     super(props);
     this.handlerestaurantclick=this.handlerestaurantclick.bind(this);
     this.saveRating=this.saveRating.bind(this);
-   // this.saveRestaurant=this.saveRestaurant.bind(this);
+    this.saveRestaurant=this.saveRestaurant.bind(this);
    
     this.state={
                 restaurants:this.formatData(),
@@ -68,7 +68,7 @@ class App extends React.Component {
    
  
   saveRating(rating){
-   // console.log (this.state.restaurants);
+   
  this.setState(
       (prevState)=>{
        
@@ -78,8 +78,17 @@ class App extends React.Component {
       }
       
     );
-   // console.log (this.state.restaurants);
+   
     	
+  }
+  saveRestaurant(restaurant){
+    this.setState(
+      (prevState)=>{
+        let restaurants=prevState.restaurants;
+        restaurants.push(restaurant);
+        return {restaurants};
+      }
+    );
   }
   
   
@@ -96,8 +105,8 @@ class App extends React.Component {
     
   }
  render(){
+  
   console.log(this.state.restaurants);
- 
    return (
     
   <div className="App">
@@ -114,7 +123,7 @@ class App extends React.Component {
      <Restaurantlist restaurants={this.state.restaurants} onclickedrestaurant={this.handlerestaurantclick} 
                      filter={this.handlefilter}fetchresto={this.state.fetchrestaurants}/>
      {this.state.showcomponent?<Comment ratings={this.state.restaurants[this.state.restaurantClicked].rating} onratingSave={this.saveRating}  />:null}
-      <GoogleApiWrapper restaurants={this.state.restaurants} fetchresto={this.state.fetchrestaurants}></GoogleApiWrapper>
+      <GoogleApiWrapper restaurants={this.state.restaurants} fetchresto={this.state.fetchrestaurants} saveResto={this.saveRestaurant}></GoogleApiWrapper>
      </ErrorBoundary>
   </div>
 );

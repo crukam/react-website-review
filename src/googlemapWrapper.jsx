@@ -24,7 +24,7 @@ export class MapContainer extends React.Component {
                 showingInfoWindow: false,
                 activeMarker: {},
                 selectedPlace: {},
-               
+                restaurant:{}
               }
 
   }
@@ -45,22 +45,51 @@ export class MapContainer extends React.Component {
 
       
   }
+  convertPosition= (location)=>{
+    let geocoder  = new this.props.google.maps.Geocoder();    // create geacoder object
+    let geocaderStatus=this.props.google.maps.GeocoderStatus.OK;
+    var Response=[];
+   geocoder.geocode({'latLng': location},(results,status)=> {
+      if(status ===geocaderStatus){
+        var  add = results[0].formatted_address;
+         Response.push(add);
+       }
+      
+    });
+    return Response; 
+   }
   
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) =>{
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
-    onMapClicked = (props) => {
+  }
+
+    onMapClicked = (props,map,e) => {
       if (this.state.showingInfoWindow) {
         this.setState({
           showingInfoWindow:false,
           activeMarker: null
         })
       }
-    };
-  
+      
+      if(this.convertPosition({lat:e.latLng.lat(),lng:e.latLng.lng()})){
+        let data={
+          key:new Date().getTime(),
+          name:'customer resto',
+          adress:this.convertPosition({lat:e.latLng.lat(),lng:e.latLng.lng()}),
+          position:{lat:e.latLng.lat(),lng:e.latLng.lng()},
+          rating:[{rating:5, comment:'Excellent'}]
+        }
+        this.setState({restaurant:data});
+      }
+       this.props.saveResto(this.state.restaurant);
+  }
+
+    
+   
  
 displayRestaurantMarkers=()=>{
         return this.props.restaurants.map((item,index)=>{
@@ -79,30 +108,13 @@ displayRestaurantMarkers=()=>{
            })
           }
   
-/*displaygooglefetchMarkers=()=>{
- return googlefetchdata.map((item,index)=>
-               {
-                     return (<Marker key={index} position={item.geometry.location}
-                               title={item.name}  name={item.name} icon={fetchdataicon}
-                               onClick={this.onMarkerClick} >
-                               <InfoWindow  marker={this.state.activeMarker}
-                                  visible={this.state.showingInfoWindow}>
-                                <div>
-                                   <h1>{this.state.selectedPlace.name}</h1>
-                                </div>
-                               </InfoWindow>
-                             </Marker>
-                            );   
-              });
 
-}*/
-  
 
  
   render() {
-     this.props.restaurants.forEach(element => {console.log(element.position);
+    // this.props.restaurants.forEach(element => {console.log(element.position);
        
-     });
+    // });
     if (this.state.hasError) {
       
       return <h1>Something went wrong.</h1>;

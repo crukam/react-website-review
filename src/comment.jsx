@@ -23,12 +23,7 @@ class Comment extends React.Component{
     }
     
     render(){
-       // console.log(this.state.showcommentInput);
-       // console.log(this.props.ratings);
-       // let list=[];
-       // this.props.ratings.forEach((item)=>{
-           // list.push(<p className="comment-item" >{item.comment}</p>)})
-       // console.log(list);
+      
         return(
             <div className="comment-wrapper">
                 <h3 className="myresto-title">custumers feedback</h3>
