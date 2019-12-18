@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, GoogleApiWrapper,Marker,InfoWindow} from 'google-maps-react';
-import logoicon from './minilogoicon.png';
-import fetchdataicon from './miniGoogleIcon.png';
+//import logoicon from './minilogoicon.png';
+//import fetchdataicon from './miniGoogleIcon.png';
 //let googlefetchdata=require('./googleData.json');
 
 
@@ -40,9 +40,9 @@ export class MapContainer extends React.Component {
         res.push(results[0].geometry.location.lat());
         res.push(results[0].geometry.location.lng());
        }
-       return res;
+      
     } );
-
+    return res;
       
   }
   convertPosition= (location)=>{
@@ -95,7 +95,7 @@ displayRestaurantMarkers=()=>{
         return this.props.restaurants.map((item,index)=>{
             return <Marker key={index} onClick={this.onMarkerClick} 
                   position={item.position}
-                  title={item.restaurantName} name={item.restaurantName} icon={ this.props.fetchresto ? fetchdataicon :logoicon} >
+                  title={item.restaurantName} name={item.restaurantName} icon={item.icon} >
                      <InfoWindow
                          marker={this.state.activeMarker}
                          visible={this.state.showingInfoWindow}>
@@ -124,7 +124,7 @@ displayRestaurantMarkers=()=>{
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
-          zoom={15}
+          zoom={14}
           style={mapStyles}
           initialCenter={{ lat: 53.607596, lng: -1.348026}}>
           <Marker onClick={this.onMarkerClick}

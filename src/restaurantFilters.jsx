@@ -1,4 +1,6 @@
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import  { faFilter} from '@fortawesome/free-solid-svg-icons';
 import './restaurantFilters.css'
 class Filter extends React.Component{
 	constructor(props){
@@ -15,7 +17,9 @@ class Filter extends React.Component{
 	render(){
 		return(
 		<div className="filterContainer">
-		    <div className="label"><b>Rating from  :</b>
+			<div><FontAwesomeIcon icon={faFilter}/> restaurants</div>
+			
+		    <div className="label"><b> star  min  :</b>
 			  <select className="filtermin" onChange={this.handlefilter} >
 			      <option className="min_option" value="0" >0</option>
 				  <option className="min_option" value="1" >1</option>
@@ -24,7 +28,7 @@ class Filter extends React.Component{
 				  <option className="min_option" value="4" >4</option>
 				  <option className="min_option" value="5" >5</option>
 			  </select>
-			  to
+			 <b>  max :</b> 
 			  <select className="filtermax" onChange={this.handlefilter}>
 			      <option className="max_option" value="5" >5</option>
 				  <option className="max_option" value="0" >0</option>

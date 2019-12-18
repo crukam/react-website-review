@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from './logo.png';
+//import logo from './logo.png';
 import GoogleApiWrapper from './googlemapWrapper.jsx';
-
+//import 'typeface-roboto';
 
 import Restaurantlist from './restaurantList.jsx';
 import Comment from './comment.jsx';
 import ErrorBoundary from './errorBandary.jsx';
 import GoogleFetcher from './googleFetcher.jsx';
+import logoicon from './minilogoicon.png';
+import fetchdataicon from './miniGoogleIcon.png';
 
 import './App.css';
 
@@ -33,8 +35,11 @@ class App extends React.Component {
     return restaurants[index].ratings.map((item)=>{return item.stars});
   }
   getarrayAverage=(array)=>{return (array.reduce((a,b)=>(a+b))/array.length);}
+   round = (x, n) =>{ return parseFloat(Math.round(x * Math.pow(10, n)) / Math.pow(10, n)).toFixed(n);} 
+  
   formatRating=(index)=>{
-    let rating=this.getarrayAverage(this.getRatings(index));
+    let rat=this.getarrayAverage(this.getRatings(index));
+    let rating=parseInt(rat.toFixed(4),10);
     return restaurants[index].ratings.map((item)=>{return {rating:rating,comment:item.comment}})
   }
  formatData=()=>{
@@ -42,6 +47,7 @@ class App extends React.Component {
     let position={ lat:item.lat, lng:item.long}
     let data={
       key:index,
+      icon:logoicon,
       name:item.restaurantName,
       adress:item.address,
       position:position,
@@ -56,6 +62,7 @@ class App extends React.Component {
      let rating=item.rating;
      let data={
         key:index,
+        icon:fetchdataicon,
         name:item.name,
         adress:item.vicinity,
         position:item.geometry.location,
@@ -64,8 +71,7 @@ class App extends React.Component {
      return data;
   });
   }
-
-   
+  
  
   saveRating(rating){
    
@@ -106,15 +112,15 @@ class App extends React.Component {
   }
  render(){
   
-  console.log(this.state.restaurants);
+ // console.log(this.state.restaurants);
    return (
     
   <div className="App">
     
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+     
       <h2>
-       Restaurants reviews
+      The resto reviewer
       </h2>
      </header>
      <ErrorBoundary>
@@ -122,7 +128,11 @@ class App extends React.Component {
      <GoogleFetcher handlefetch={()=>this.handlefetch()} ></GoogleFetcher>
      <Restaurantlist restaurants={this.state.restaurants} onclickedrestaurant={this.handlerestaurantclick} 
                      filter={this.handlefilter}fetchresto={this.state.fetchrestaurants}/>
-     {this.state.showcomponent?<Comment ratings={this.state.restaurants[this.state.restaurantClicked].rating} onratingSave={this.saveRating}  />:null}
+     {this.state.showcomponent?<Comment name={this.state.restaurants[this.state.restaurantClicked].name}
+                                adress={this.state.restaurants[this.state.restaurantClicked].adress} 
+                               ratings={this.state.restaurants[this.state.restaurantClicked].rating} 
+                               onratingSave={this.saveRating}  
+                              />:null}
       <GoogleApiWrapper restaurants={this.state.restaurants} fetchresto={this.state.fetchrestaurants} saveResto={this.saveRestaurant}></GoogleApiWrapper>
      </ErrorBoundary>
   </div>

@@ -9,17 +9,18 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 5vmin;
+  height: 2vmin;
 }
 
 .App-header {
-  background-color: gray;
+  background-color:black;
   width: 100%;
-  min-height: 5vh;
+  min-height: 2vh;
+  
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(14px + 2vmin);
+  justify-content: flex-start;
+  font-size: calc(5px + 2vmin);
   color: white;
 }
 

@@ -1,7 +1,14 @@
 import React from 'react';
 import Restaurant from './restaurant.jsx';
 import Filter from './restaurantFilters.jsx';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import  { faBars,faWindowClose} from '@fortawesome/free-solid-svg-icons';
 import './restaurantlist.css';
+const iconStyle = {
+    height:'80%',
+    width:'5%',
+    margin:'1%'
+};
 
 
 class Restaurantlist extends React.Component{
@@ -37,8 +44,13 @@ class Restaurantlist extends React.Component{
       
           
         return(<div className="restaurant-list">
-                 <Filter getmin_filter={this.handle_min} getmax_filter={this.handle_max}/>
-                  {this.getdataforRender()}  
+                 <div className="crud-div" ><FontAwesomeIcon style={iconStyle} icon={faBars}/><FontAwesomeIcon style={iconStyle} icon={faWindowClose}/></div>
+                 <h3 className="restaurant-add">To add a restaurant click on the map </h3>
+                 
+                     <Filter getmin_filter={this.handle_min} getmax_filter={this.handle_max}/>
+                     <div className="restaurant-items">
+                          {this.getdataforRender()} 
+                     </div>
                </div>);
     }
     

@@ -1,5 +1,5 @@
 import React from 'react';
-import './comment.css';
+import './commentInput.css';
     
 const commentInit={rating:0,comment:''};
 class CommentInput extends React.Component{
