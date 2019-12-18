@@ -1,0 +1,30 @@
+.restaurant-wrapper{
+   
+    background-color:white;
+    border-bottom: 2px solid gray;
+    width: 100%;
+   
+}
+.restaurant{
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+   
+}
+.star-outer{
+    display: inline-block;
+    position: relative;
+    
+    
+}
+.star-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: yellow;
+    
+    
+    
+}
