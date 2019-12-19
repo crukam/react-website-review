@@ -1,7 +1,8 @@
 import React from 'react';
 import CommentInput from './commentInput.jsx';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import  { faWindowClose,faBars} from '@fortawesome/free-solid-svg-icons';
+import  { faWindowClose,faBars,faStar} from '@fortawesome/free-solid-svg-icons';
+import './restaurant.css';
 import './comment.css';
 const iconStyle = {
     height:'80%',
@@ -30,13 +31,27 @@ class Comment extends React.Component{
     }
     
     render(){
-      
+      console.log(this.props.resto);
         return(
             <div className="comment-wrapper">
                 <div className="crud-div" ><FontAwesomeIcon style={iconStyle} icon={faBars}/><FontAwesomeIcon style={iconStyle} icon={faWindowClose} /></div>
                 <div className="myresto-title">
-                 <h2 className="resto-name" >{this.props.name} </h2>
-                 <div>{this.props.adress}</div>
+                 <h2 className="resto-name" >{this.props.resto.name} </h2>
+                 <div>{this.props.resto.adress}</div>
+                 <div>{this.props.resto.rating[0].rating}<div className="star-outer" >
+                                                                             <FontAwesomeIcon icon={faStar} />
+                                                                             <FontAwesomeIcon icon={faStar} />
+                                                                             <FontAwesomeIcon icon={faStar} />
+                                                                             <FontAwesomeIcon icon={faStar} />
+                                                                             <FontAwesomeIcon icon={faStar} />
+                                                                             <div className="star-inner" style={{width:this.props.resto.rating[0].rating *20+'%'}}>
+                                                                                 <FontAwesomeIcon icon={faStar} />
+                                                                                 <FontAwesomeIcon icon={faStar} />
+                                                                                 <FontAwesomeIcon icon={faStar} />
+                                                                                 <FontAwesomeIcon icon={faStar} />
+                                                                                 <FontAwesomeIcon icon={faStar} />
+                                                                             </div>
+                         </div>                                               </div>
                 </div>
             
               <div className="comment-data">

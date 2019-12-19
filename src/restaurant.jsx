@@ -12,7 +12,7 @@ class Restaurant extends React.Component{
             <button className="restaurant-wrapper"onClick={this.props.onClick} >
                 <div className="restaurant name">{this.props.name}</div>
                 <div className="restaurant adress ">{this.props.adress}</div>
-                <div className="restaurant rating">{this.props.rating}<div className="star-outer" >
+                <div className="restaurant rating">{this.props.rating} <div className="star-outer" >
                                                                              <FontAwesomeIcon icon={faStar} />
                                                                              <FontAwesomeIcon icon={faStar} />
                                                                              <FontAwesomeIcon icon={faStar} />
@@ -25,8 +25,9 @@ class Restaurant extends React.Component{
                                                                                  <FontAwesomeIcon icon={faStar} />
                                                                                  <FontAwesomeIcon icon={faStar} />
                                                                              </div>
-                                                                        </div>
-                </div>
+                         </div>                                                       
+                 </div>
+               
             </button>
         );
                      

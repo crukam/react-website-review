@@ -118,7 +118,7 @@ class App extends React.Component {
   <div className="App">
     
     <header className="App-header">
-     
+      
       <h2>
       The resto reviewer
       </h2>
@@ -128,7 +128,7 @@ class App extends React.Component {
      <GoogleFetcher handlefetch={()=>this.handlefetch()} ></GoogleFetcher>
      <Restaurantlist restaurants={this.state.restaurants} onclickedrestaurant={this.handlerestaurantclick} 
                      filter={this.handlefilter}fetchresto={this.state.fetchrestaurants}/>
-     {this.state.showcomponent?<Comment name={this.state.restaurants[this.state.restaurantClicked].name}
+     {this.state.showcomponent?<Comment resto={this.state.restaurants[this.state.restaurantClicked]}name={this.state.restaurants[this.state.restaurantClicked].name}
                                 adress={this.state.restaurants[this.state.restaurantClicked].adress} 
                                ratings={this.state.restaurants[this.state.restaurantClicked].rating} 
                                onratingSave={this.saveRating}  
