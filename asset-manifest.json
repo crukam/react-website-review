@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-website-review/static/css/main.d5a8665e.chunk.css",
+    "main.js": "/react-website-review/static/js/main.23bbadce.chunk.js",
+    "main.js.map": "/react-website-review/static/js/main.23bbadce.chunk.js.map",
+    "runtime-main.js": "/react-website-review/static/js/runtime-main.5a15c556.js",
+    "runtime-main.js.map": "/react-website-review/static/js/runtime-main.5a15c556.js.map",
+    "static/js/2.1a593dd1.chunk.js": "/react-website-review/static/js/2.1a593dd1.chunk.js",
+    "static/js/2.1a593dd1.chunk.js.map": "/react-website-review/static/js/2.1a593dd1.chunk.js.map",
+    "index.html": "/react-website-review/index.html",
+    "precache-manifest.4c443f5a40580a0c9af9c24eb0b94479.js": "/react-website-review/precache-manifest.4c443f5a40580a0c9af9c24eb0b94479.js",
+    "service-worker.js": "/react-website-review/service-worker.js",
+    "static/css/main.d5a8665e.chunk.css.map": "/react-website-review/static/css/main.d5a8665e.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5a15c556.js",
+    "static/js/2.1a593dd1.chunk.js",
+    "static/css/main.d5a8665e.chunk.css",
+    "static/js/main.23bbadce.chunk.js"
+  ]
+}
