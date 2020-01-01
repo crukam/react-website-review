@@ -14,7 +14,7 @@ class Comment extends React.Component{
         super(props);
         this.handlesaveInput=this.handlesaveInput.bind(this);
         this.handledisplayInput=this.handledisplayInput.bind(this);
-        this.state={showcommentInput:false}
+        this.state={showcommentInput:false,data:null}
     }
     
     handledisplayInput(){
@@ -29,13 +29,19 @@ class Comment extends React.Component{
         (item)=>{return <p className="comment-item" >{item.comment}</p> }
         );
     }
+    getStreetVieuw=(position)=>{
+       return 'https://maps.googleapis.com/maps/api/streetview?location='+position.lat+','+position.lng+'&size=300x200&fov=80&heading=70&pitch=0&key=AIzaSyDdc8rD8-iI6ZMvSGakZ1ZJ5wkOzUFRWiI';
+       
+    }
     
     render(){
-      console.log(this.props.resto);
+        
+      
         return(
             <div className="comment-wrapper">
-                <div className="crud-div" ><FontAwesomeIcon style={iconStyle} icon={faBars}/><FontAwesomeIcon style={iconStyle} icon={faWindowClose} /></div>
+                <div className="crud-div" ><FontAwesomeIcon style={iconStyle} icon={faBars}/><FontAwesomeIcon style={iconStyle} icon={faWindowClose} onClick={this.props.hidecomment} /></div>
                 <div className="myresto-title">
+                <img src={this.getStreetVieuw(this.props.resto.position)} alt='restaurant'/>
                  <h2 className="resto-name" >{this.props.resto.name} </h2>
                  <div>{this.props.resto.adress}</div>
                  <div>{this.props.resto.rating[0].rating}<div className="star-outer" >

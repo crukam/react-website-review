@@ -2,14 +2,14 @@ import React from 'react';
 //import logo from './logo.png';
 import GoogleApiWrapper from './googlemapWrapper.jsx';
 //import 'typeface-roboto';
-
+import Inputname from './restaurantInput.jsx';
 import Restaurantlist from './restaurantList.jsx';
 import Comment from './comment.jsx';
 import ErrorBoundary from './errorBandary.jsx';
 import GoogleFetcher from './googleFetcher.jsx';
 import logoicon from './minilogoicon.png';
 import fetchdataicon from './miniGoogleIcon.png';
-
+import logo from './gourmetlogoicon.png';
 import './App.css';
 
 let restaurants=require('./restaurant.json');
@@ -21,13 +21,21 @@ class App extends React.Component {
     this.handlerestaurantclick=this.handlerestaurantclick.bind(this);
     this.saveRating=this.saveRating.bind(this);
     this.saveRestaurant=this.saveRestaurant.bind(this);
-   
+    this.handlerestonamefetch=this.handlerestonamefetch.bind(this);
+    this.displayrestonamefetch=this.displayrestonamefetch.bind(this);
+    this.fetchnewResto=this.fetchnewResto.bind(this);
+    this.hidelist=this.hidelist.bind(this);
+    this.hidecomment=this.hidecomment.bind(this);
     this.state={
                 restaurants:this.formatData(),
                 fetchrestaurants:false,
                 addedrestaurants:[],
                 showcomponent:false,
+                showRestoInput:false,
+                newrestoname:'custom-resto',
+                newresto:null,
                 restaurantClicked:-1,
+                showlist:true
               }
   }
   getRatings=(index)=>{
@@ -97,10 +105,33 @@ class App extends React.Component {
     );
   }
   
-  
+  hidelist(){
+    this.setState({showlist:false});
+  }
+  hidecomment(){
+    this.setState({showcomponent:false});
+  }
   
   handlerestaurantclick(index){
     this.setState({restaurantClicked:index, showcomponent:true});
+  }
+  displayrestonamefetch(){this.setState({showRestoInput:true});}
+  fetchnewResto(resto){
+    this.setState({newresto:resto});}
+  handlerestonamefetch(input){
+    if(input){ this.setState({newrestoname:input,showRestoInput:false});}
+
+    //fetch new resto
+    this.setState((prevState)=>{
+      let newresto=prevState.newresto;
+      newresto.name=input;
+      return newresto;
+    });
+    console.log('before:'+ this.state.restaurants)
+    this.saveRestaurant(this.state.newresto);
+    //save restaurant
+    console.log(this.state.restaurants);
+
   }
   handlefetch(){
     this.setState((prevState)=>{
@@ -110,30 +141,34 @@ class App extends React.Component {
     });
     
   }
- render(){
   
- // console.log(this.state.restaurants);
+ render(){
+  //console.log(this.state.newrestoname);
+ //console.log(googleJson[0].photos[0].html_attributions[0].split('>')[0]);
    return (
     
   <div className="App">
     
     <header className="App-header">
+      <div className="App-logo"><img src={logo} alt='logo'/></div>
       
       <h2>
-      The resto reviewer
+      The gourmet's corner
       </h2>
      </header>
      <ErrorBoundary>
-   
+    
      <GoogleFetcher handlefetch={()=>this.handlefetch()} ></GoogleFetcher>
-     <Restaurantlist restaurants={this.state.restaurants} onclickedrestaurant={this.handlerestaurantclick} 
-                     filter={this.handlefilter}fetchresto={this.state.fetchrestaurants}/>
+     {this.state.showlist?<Restaurantlist restaurants={this.state.restaurants} onclickedrestaurant={this.handlerestaurantclick} 
+                     filter={this.handlefilter}fetchresto={this.state.fetchrestaurants} hidelist={this.hidelist}/>:null}
      {this.state.showcomponent?<Comment resto={this.state.restaurants[this.state.restaurantClicked]}name={this.state.restaurants[this.state.restaurantClicked].name}
                                 adress={this.state.restaurants[this.state.restaurantClicked].adress} 
                                ratings={this.state.restaurants[this.state.restaurantClicked].rating} 
-                               onratingSave={this.saveRating}  
+                               onratingSave={this.saveRating} 
+                               hidecomment={this.hidecomment} 
                               />:null}
-      <GoogleApiWrapper restaurants={this.state.restaurants} fetchresto={this.state.fetchrestaurants} saveResto={this.saveRestaurant}></GoogleApiWrapper>
+      { this.state.showRestoInput?<Inputname fetchrestoname={this.handlerestonamefetch}/>:null}
+      <GoogleApiWrapper restaurants={this.state.restaurants} fetchresto={this.state.fetchrestaurants} fetchuserResto={this.fetchnewResto}       fetchrestoname={this.state.newrestoname} displayrestonameinput={this.displayrestonamefetch} handleuserRestosave={this.handlerestonamefetch} ></GoogleApiWrapper>
      </ErrorBoundary>
   </div>
 );

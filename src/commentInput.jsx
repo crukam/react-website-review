@@ -36,7 +36,7 @@ class CommentInput extends React.Component{
              <div className = "inputcontainer rating">
                     <label>Ratings</label>
 					<select name="rating" value={this.state.rating.star} onChange={this.handleChange}>
-					<option value="0" >0 </option>  
+					<option value="0" >0 </option>            
 					<option value="1">1</option>  
 					<option value="2">2</option>
 					<option value="3">3</option>

@@ -8,18 +8,21 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+ /* animation: App-logo-spin infinite 20s linear;*/
   height: 2vmin;
+  margin-right: 2%;
+  margin-bottom: 2%;
 }
 
 .App-header {
   background-color:black;
   width: 100%;
   min-height: 2vh;
-  
   display: flex;
-  align-items: center;
+ align-items: center;
   justify-content: flex-start;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
   font-size: calc(5px + 2vmin);
   color: white;
 }

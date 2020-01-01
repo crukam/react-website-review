@@ -16,7 +16,7 @@ class Restaurantlist extends React.Component{
         super(props);
         this.handle_min=this.handle_min.bind(this);
         this.handle_max=this.handle_max.bind(this);
-        this.state={rat_min:0,rat_max:5,rat_average:0}
+        this.state={rat_min:0,rat_max:5,rat_average:0,hidelist:true}
     }
    
     handleclick(index){
@@ -44,7 +44,7 @@ class Restaurantlist extends React.Component{
       
           
         return(<div className="restaurant-list">
-                 <div className="crud-div" ><FontAwesomeIcon style={iconStyle} icon={faBars}/><FontAwesomeIcon style={iconStyle} icon={faWindowClose}/></div>
+                 <div className="crud-div" ><FontAwesomeIcon style={iconStyle} icon={faBars}/><FontAwesomeIcon style={iconStyle} icon={faWindowClose} onClick={this.props.hidelist}/></div>
                  <h3 className="restaurant-add">To add a restaurant click on the map </h3>
                  
                      <Filter getmin_filter={this.handle_min} getmax_filter={this.handle_max}/>

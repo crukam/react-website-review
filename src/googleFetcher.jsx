@@ -33,7 +33,7 @@ class GoogleFetcher extends React.Component{
       if(!this.props.fetchresto ) { 
          return (
                  <button className="place-fetcher" onClick={()=>this.props.handlefetch()}>
-                    Goggle place
+                    Google place
                  </button>
                 )
             }else{

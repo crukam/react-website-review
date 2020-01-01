@@ -1,8 +1,7 @@
 import React from 'react';
 import { Map, GoogleApiWrapper,Marker,InfoWindow} from 'google-maps-react';
-//import logoicon from './minilogoicon.png';
-//import fetchdataicon from './miniGoogleIcon.png';
-//let googlefetchdata=require('./googleData.json');
+import userlogo from './customiconmini.png'
+
 
 
 const mapStyles = {
@@ -25,6 +24,7 @@ export class MapContainer extends React.Component {
                 activeMarker: {},
                 selectedPlace: {},
                 restaurant:{}
+                
               }
 
   }
@@ -66,6 +66,22 @@ export class MapContainer extends React.Component {
       showingInfoWindow: true
     });
   }
+  handleSaveNewresto=(e)=>{
+    if(this.convertPosition({lat:e.latLng.lat(),lng:e.latLng.lng()})){
+      let data={
+        key:new Date().getTime(),
+        name:this.props.fetchrestoname,
+        icon:userlogo,
+        adress:this.convertPosition({lat:e.latLng.lat(),lng:e.latLng.lng()}),
+        position:{lat:e.latLng.lat(),lng:e.latLng.lng()},
+        rating:[{rating:5, comment:'Excellent'}]
+      }
+      this.setState({restaurant:data});
+      //console.log('name before fetching:'+data.name);
+    }
+    
+    this.props.fetchuserResto(this.state.restaurant);
+  }
 
     onMapClicked = (props,map,e) => {
       if (this.state.showingInfoWindow) {
@@ -74,18 +90,10 @@ export class MapContainer extends React.Component {
           activeMarker: null
         })
       }
-      
-      if(this.convertPosition({lat:e.latLng.lat(),lng:e.latLng.lng()})){
-        let data={
-          key:new Date().getTime(),
-          name:'customer resto',
-          adress:this.convertPosition({lat:e.latLng.lat(),lng:e.latLng.lng()}),
-          position:{lat:e.latLng.lat(),lng:e.latLng.lng()},
-          rating:[{rating:5, comment:'Excellent'}]
-        }
-        this.setState({restaurant:data});
-      }
-       this.props.saveResto(this.state.restaurant);
+      this.props.displayrestonameinput();
+     // this.setState({event:e});
+    this.handleSaveNewresto(e);
+     
   }
 
     
@@ -115,12 +123,14 @@ displayRestaurantMarkers=()=>{
     // this.props.restaurants.forEach(element => {console.log(element.position);
        
     // });
+   // if(this.state.event){ console.log(this.state.event.latLng.lat());}
+   
     if (this.state.hasError) {
       
       return <h1>Something went wrong.</h1>;
      }
     return (
-	     
+	      
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
@@ -131,7 +141,7 @@ displayRestaurantMarkers=()=>{
                   position={{ lat: 53.607596 , lng: -1.348026}}
                   name={'current location'}
                  >
-                  
+                
                      <InfoWindow 
                        marker={this.state.activeMarker}
                        visible={true}>
@@ -140,9 +150,11 @@ displayRestaurantMarkers=()=>{
                        </div>
                      </InfoWindow>
                   </Marker>
-             
-             {this.displayRestaurantMarkers()}
-        </Map> );
+                 
+              {this.displayRestaurantMarkers()}
+              
+        </Map>
+        );
   }
 }
 export default GoogleApiWrapper({
